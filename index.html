@@ -258,17 +258,13 @@
       formKontak.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const nama = document.querySelector('input[name="nama"]').value;
-        const email = document.querySelector('input[name="email"]').value;
-        const pesan = document.querySelector('textarea[name="pesan"]').value;
+        const nama = document.getElementById("namaInput").value;
+        const email = document.getElementById("emailInput").value;
+        const pesan = document.getElementById("pesanInput").value;
 
         if (nama && email && pesan) {
-          feedback.innerText = `Terima kasih, ${nama}! Pesanmu telah dikirim.`;
-
-          // Menyembunyikan pesan setelah 5 detik
-          setTimeout(function () {
-            feedback.innerText = ""; // Mengosongkan pesan setelah 5 detik
-          }, 5000); // 5000 milidetik = 5 detik
+          // Pop-up pesan terima kasih
+          alert(`Terima kasih, ${nama}! Pesanmu telah dikirim.`);
 
           // Reset form setelah pesan terkirim
           formKontak.reset();
