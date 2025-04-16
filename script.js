@@ -80,15 +80,19 @@ formKontak.addEventListener("submit", function (event) {
 
   if (nama && email && pesan) {
     feedback.innerText = `Terima kasih, ${nama}! Pesanmu telah dikirim.`;
+    feedback.style.display = "block"; // Menampilkan pesan
 
     // Menyembunyikan pesan setelah 5 detik
     setTimeout(function () {
       feedback.innerText = ""; // Mengosongkan pesan setelah 5 detik
+      feedback.style.display = "none"; // Menyembunyikan pesan
     }, 5000); // 5000 milidetik = 5 detik
 
     // Reset form setelah pesan terkirim
     formKontak.reset();
   } else {
     feedback.innerText = "Mohon isi semua kolom.";
+    feedback.style.display = "block"; // Menampilkan pesan error
   }
 });
+

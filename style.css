@@ -125,13 +125,14 @@ body {
       margin: 0.5rem 0;
     }
   }
-/*   
+  
   #feedback {
     margin-top: 1rem;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Warna hijau */
     color: white;
     border-radius: 5px;
     text-align: center;
+    display: none; /* Mulanya sembunyikan pesan */
   }
-   */
+  
