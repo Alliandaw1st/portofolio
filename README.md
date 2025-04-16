@@ -25,18 +25,24 @@ Saya adalah seorang web developer yang berfokus pada pengembangan situs web resp
 3. **[Landing Page Produk](#)** - Halaman promosi sederhana untuk produk digital atau fisik.
 
 ## 📧 Kontak
-Anda dapat menghubungi saya melalui formulir kontak yang tersedia di halaman portofolio ini atau langsung mengirim email ke [email@example.com](mailto:email@example.com).
+Anda dapat menghubungi saya melalui formulir kontak yang tersedia di halaman portofolio ini atau langsung mengirim email ke [alfredomichaelalliandaw@gmail.com](mailto:alfredomichaelalliandaw@gmail.com).
 
 ## 📜 Lisensi
-Portofolio ini dilisensikan di bawah [MIT License](LICENSE).MIT License
+Portofolio ini dilisensikan di bawah [MIT License](LICENSE).
+
+MIT License
+
 Copyright (c) 2025 Alfredo Michael Alliandaw
+
 Diberikan izin, secara gratis, kepada siapa pun yang memperoleh salinan perangkat lunak ini dan dokumen terkait, untuk menggunakan perangkat lunak tanpa batasan, termasuk tanpa batasan hak untuk menggunakan, menyalin, mengubah, menggabungkan, menerbitkan, mendistribusikan, memberi lisensi, dan/atau menjual salinan perangkat lunak ini, dan untuk mengizinkan orang lain yang diberikan perangkat lunak ini untuk melakukannya, dengan ketentuan bahwa pemberitahuan hak cipta di atas dan pemberitahuan izin ini dimasukkan dalam semua salinan atau bagian substansial perangkat lunak ini.
+
 Perangkat lunak ini disediakan "sebagaimana adanya", tanpa jaminan apa pun, baik yang tersurat maupun yang tersirat, termasuk tetapi tidak terbatas pada jaminan kelayakan untuk diperdagangkan, kesesuaian untuk tujuan tertentu, atau pelanggaran hak. Dalam hal apa pun, pengarang atau pemegang hak cipta tidak bertanggung jawab atas klaim, kerusakan, atau kewajiban lain, baik dalam tindakan kontrak, kesalahan, atau lainnya, yang timbul dari, keluar dari, atau terkait dengan perangkat lunak ini atau penggunaan atau transaksi lainnya dalam perangkat lunak ini.
 
 
 ## 🌍 Hubungi Saya
-- LinkedIn: [linkedin.com/in/alfredomichael](https://id.linkedin.com/in/alfredo-michael-alliandaw)
+- LinkedIn: [https://id.linkedin.com/in/alfredo-michael-alliandaw](https://id.linkedin.com/in/alfredo-michael-alliandaw)
 - GitHub: [github.com/Alliandaw1st](https://github.com/Alliandaw1st)
+- Instagram: [https://www.instagram.com/alliandaw1st/](https://www.instagram.com/alliandaw1st/)
 
 ## 📄 Catatan
 Dokumentasi ini memberikan gambaran tentang portofolio saya, termasuk informasi proyek yang telah saya kerjakan dan teknologi yang saya gunakan. Jika Anda tertarik untuk bekerja sama atau ingin bertanya lebih lanjut, jangan ragu untuk menghubungi saya!
