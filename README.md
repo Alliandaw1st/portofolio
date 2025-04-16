@@ -41,7 +41,7 @@ Perangkat lunak ini disediakan "sebagaimana adanya", tanpa jaminan apa pun, baik
 
 ## 🌍 Hubungi Saya
 - LinkedIn: [https://id.linkedin.com/in/alfredo-michael-alliandaw](https://id.linkedin.com/in/alfredo-michael-alliandaw)
-- GitHub: [github.com/Alliandaw1st](https://github.com/Alliandaw1st)
+- GitHub: [https://github.com/Alliandaw1st/](https://github.com/Alliandaw1st)
 - Instagram: [https://www.instagram.com/alliandaw1st/](https://www.instagram.com/alliandaw1st/)
 
 ## 📄 Catatan
