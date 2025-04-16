@@ -60,9 +60,7 @@ const proyekData = [
   });
   
   const formKontak = document.getElementById("form-kontak");
-  const modal = document.getElementById("myModal");
-  const modalMessage = document.getElementById("modalMessage");
-  const closeBtn = document.getElementsByClassName("close")[0];
+  const feedback = document.getElementById("feedback");
   
   formKontak.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -72,8 +70,12 @@ const proyekData = [
     const pesan = document.getElementById("pesanInput").value;
   
     if (nama && email && pesan) {
-      modalMessage.innerText = `Terima kasih, ${nama}! Pesanmu telah dikirim.`;
-      modal.style.display = "block"; // Tampilkan modal
+      feedback.innerText = `Terima kasih, ${nama}! Pesanmu telah dikirim.`;
+  
+      // Menyembunyikan pesan setelah 5 detik
+      setTimeout(function () {
+        feedback.innerText = ''; // Mengosongkan pesan setelah 5 detik
+      }, 5000); // 5000 milidetik = 5 detik
   
       // Reset form setelah pesan terkirim
       formKontak.reset();
@@ -81,16 +83,4 @@ const proyekData = [
       feedback.innerText = "Mohon isi semua kolom.";
     }
   });
-  
-  // Tutup modal saat klik tombol "X"
-  closeBtn.onclick = function() {
-    modal.style.display = "none";
-  }
-  
-  // Tutup modal jika klik di luar modal
-  window.onclick = function(event) {
-    if (event.target === modal) {
-      modal.style.display = "none";
-    }
-  }
   

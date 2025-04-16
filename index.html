@@ -5,51 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portofolio Saya</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <style>
-    /* Styling untuk pop-up */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      z-index: 1000;
-      width: 300px;
-    }
-
-    .popup .popup-content {
-      text-align: center;
-    }
-
-    .popup button {
-      background-color: #444;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .popup button:hover {
-      background-color: #222;
-    }
-
-    /* Styling untuk overlay */
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -63,7 +19,17 @@
     <a href="#kontak">Kontak</a>
   </nav>
 
-  <section id="kontak">
+  <section id="tentang" class="fade-in">
+    <h2>Tentang Saya</h2>
+    <p>Saya sedang menjalani Working Holiday Visa di Australia dan memiliki pengalaman kerja di berbagai sektor. Saat ini saya sedang belajar JavaScript untuk mengembangkan website portofolio sendiri.</p>
+  </section>
+
+  <section id="proyek" class="fade-in">
+    <h2>Proyek Saya</h2>
+    <div id="daftar-proyek"></div>
+  </section>
+
+  <section id="kontak" class="fade-in">
     <h2>Kontak</h2>
     <form id="form-kontak" action="https://formspree.io/f/meoawarl" method="POST">
       <input type="text" name="nama" placeholder="Nama Anda" required />
@@ -71,46 +37,12 @@
       <textarea id="pesanInput" placeholder="Pesan Anda" required></textarea>
       <button type="submit">Kirim</button>
     </form>
+    <p id="feedback"></p> <!-- Tempat pesan feedback akan muncul -->     
   </section>
 
-  <!-- Pop-up dan Overlay -->
-  <div class="overlay" id="overlay"></div>
-  <div class="popup" id="popup">
-    <div class="popup-content">
-      <p>Terima kasih, pesan Anda telah dikirim!</p>
-      <button id="closePopup">Tutup</button>
-    </div>
-  </div>
+  <button id="toTopBtn">🔝 Atas</button>
+  <button id="darkModeToggle">🌙</button>
 
-  <script>
-    // Menangani pengiriman form
-    const formKontak = document.getElementById("form-kontak");
-    const popup = document.getElementById("popup");
-    const overlay = document.getElementById("overlay");
-    const closePopupButton = document.getElementById("closePopup");
-
-    formKontak.addEventListener("submit", function (event) {
-      event.preventDefault(); // Menghentikan pengiriman form
-
-      // Menampilkan pop-up
-      popup.style.display = "block";
-      overlay.style.display = "block";
-
-      // Menyembunyikan pop-up setelah 5 detik
-      setTimeout(function () {
-        popup.style.display = "none";
-        overlay.style.display = "none";
-      }, 5000); // Pop-up akan hilang setelah 5 detik
-
-      // Reset form
-      formKontak.reset();
-    });
-
-    // Menutup pop-up ketika tombol "Tutup" ditekan
-    closePopupButton.addEventListener("click", function() {
-      popup.style.display = "none";
-      overlay.style.display = "none";
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
