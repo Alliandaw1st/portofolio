@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portofolio Saya</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,31 +15,32 @@
       scroll-behavior: smooth;
     }
 
-    nav {
-      background-color: #333;
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
     header {
       background-color: #222;
       color: #fff;
       padding: 2rem;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     section {
@@ -48,11 +48,11 @@
       max-width: 800px;
       margin: auto;
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease-out;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
 
-    section.visible {
+    section.show {
       opacity: 1;
       transform: translateY(0);
     }
@@ -98,19 +98,80 @@
     form button:hover {
       background-color: #444;
     }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #222;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      display: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .proyek {
+        font-size: 0.95rem;
+      }
+
+      form input,
+      form textarea {
+        font-size: 1rem;
+      }
+
+      form button {
+        font-size: 1rem;
+        width: 100%;
+      }
+    }
+
+    body.dark {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark header,
+    body.dark nav {
+      background-color: #1f1f1f;
+    }
+
+    body.dark .proyek {
+      background-color: #1e1e1e;
+      border-color: #444;
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1 id="nama">Nama Kamu</h1>
+    <p>Web Developer | Freelancer | WHV Explorer</p>
+  </header>
+
   <nav>
     <a href="#tentang">Tentang</a>
     <a href="#proyek">Proyek</a>
     <a href="#kontak">Kontak</a>
+    <a href="#" onclick="toggleDarkMode()">🌓 Mode</a>
   </nav>
-
-  <header>
-    <h1 id="nama">Alfredo Michael Alliandaw</h1>
-    <p>Web Developer | Freelancer | WHV Explorer</p>
-  </header>
 
   <section id="tentang">
     <h2>Tentang Saya</h2>
@@ -132,6 +193,8 @@
     </form>
     <p id="feedback"></p>
   </section>
+
+  <button id="back-to-top" onclick="scrollToTop()">⬆ Kembali ke Atas</button>
 
   <script>
     const proyekData = [
@@ -176,19 +239,36 @@
       }
     });
 
-    // Animasikan bagian yang terlihat saat scroll
+    // Animasi fade-in saat scroll
     const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          entry.target.classList.add("show");
         }
       });
-    }, { threshold: 0.1 });
+    }, {
+      threshold: 0.1
+    });
 
     sections.forEach(section => {
       observer.observe(section);
     });
+
+    // Tombol kembali ke atas
+    const backToTop = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Mode gelap
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
   </script>
 </body>
 </html>
