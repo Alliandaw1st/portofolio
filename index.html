@@ -1,263 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio Saya</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f5f5;
-      color: #333;
-      transition: background-color 0.3s, color 0.3s;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Saya</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #333;
+        transition: background-color 0.3s, color 0.3s;
+      }
 
-    header, nav {
-      background-color: #222;
-      color: #fff;
-      text-align: center;
-      padding: 1rem 2rem;
-    }
+      header,
+      nav {
+        background-color: #222;
+        color: #fff;
+        text-align: center;
+        padding: 1rem 2rem;
+      }
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
 
-    nav a {
-      color: white;
-      margin: 0 1rem;
-      text-decoration: none;
-    }
-
-    .dark-mode {
-      background-color: #1a1a1a;
-      color: #f5f5f5;
-    }
-
-    section {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 0.5rem;
-    }
-
-    #daftar-proyek {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .proyek {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    form button {
-      padding: 0.5rem 1rem;
-      background-color: #222;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    form button:hover {
-      background-color: #444;
-    }
-
-    #darkModeToggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 10px;
-      background: #222;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-
-    #toTopBtn {
-      display: none;
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      z-index: 99;
-      border: none;
-      outline: none;
-      background-color: #222;
-      color: white;
-      cursor: pointer;
-      padding: 10px 15px;
-      border-radius: 10px;
-      font-size: 14px;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 600px) {
       nav a {
-        display: block;
-        margin: 0.5rem 0;
+        color: white;
+        margin: 0 1rem;
+        text-decoration: none;
       }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1 id="nama">Alfredo Michael Alliandaw</h1>
-    <p>Web Developer | Freelancer | WHV Explorer</p>
-  </header>
 
-  <nav>
-    <a href="#tentang">Tentang</a>
-    <a href="#proyek">Proyek</a>
-    <a href="#kontak">Kontak</a>
-  </nav>
-
-  <section id="tentang" class="fade-in">
-    <h2>Tentang Saya</h2>
-    <p>Saya sedang menjalani Working Holiday Visa di Australia dan memiliki pengalaman kerja di berbagai sektor. Saat ini saya sedang belajar JavaScript untuk mengembangkan website portofolio sendiri.</p>
-  </section>
-
-  <section id="proyek" class="fade-in">
-    <h2>Proyek Saya</h2>
-    <div id="daftar-proyek"></div>
-  </section>
-
-  <section id="kontak" class="fade-in">
-    <h2>Kontak</h2>
-    <form id="form-kontak" action="https://formspree.io/f/meoawarl" method="POST">
-      <input type="text" name="nama" placeholder="Nama Anda" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <textarea id="pesanInput" placeholder="Pesan Anda" required></textarea>
-      <button type="submit">Kirim</button>
-    </form>
-    <p id="feedback"></p>    
-  </section>
-
-  <button id="toTopBtn">🔝 Atas</button>
-  <button id="darkModeToggle">🌙</button>
-
-  <script>
-    const proyekData = [
-      {
-        judul: "Website CV",
-        deskripsi: "Sebuah website untuk menampilkan Curriculum Vitae dengan desain modern.",
-      },
-      {
-        judul: "Aplikasi Catatan Harian",
-        deskripsi: "Aplikasi berbasis web untuk mencatat kegiatan harian dan to-do list.",
-      },
-      {
-        judul: "Landing Page Produk",
-        deskripsi: "Halaman promosi sederhana untuk produk digital atau fisik.",
+      .dark-mode {
+        background-color: #1a1a1a;
+        color: #f5f5f5;
       }
-    ];
 
-    const daftarProyek = document.getElementById("daftar-proyek");
+      section {
+        padding: 2rem;
+        max-width: 800px;
+        margin: auto;
+      }
 
-    proyekData.forEach((proyek) => {
-      const div = document.createElement("div");
-      div.className = "proyek";
-      div.innerHTML = `<h3>${proyek.judul}</h3><p>${proyek.deskripsi}</p>`;
-      daftarProyek.appendChild(div);
-    });
+      h2 {
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 0.5rem;
+      }
 
-    const fadeEls = document.querySelectorAll(".fade-in");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
+      #daftar-proyek {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .proyek {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      form button {
+        padding: 0.5rem 1rem;
+        background-color: #222;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      form button:hover {
+        background-color: #444;
+      }
+
+      #darkModeToggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px;
+        background: #222;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      #toTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        z-index: 99;
+        border: none;
+        outline: none;
+        background-color: #222;
+        color: white;
+        cursor: pointer;
+        padding: 10px 15px;
+        border-radius: 10px;
+        font-size: 14px;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      .fade-in.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 600px) {
+        nav a {
+          display: block;
+          margin: 0.5rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 id="nama">Alfredo Michael Alliandaw</h1>
+      <p>Web Developer | Freelancer | WHV Explorer</p>
+    </header>
+
+    <nav>
+      <a href="#tentang">Tentang</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+
+    <section id="tentang" class="fade-in">
+      <h2>Tentang Saya</h2>
+      <p>
+        Saya sedang menjalani Working Holiday Visa di Australia dan memiliki
+        pengalaman kerja di berbagai sektor. Saat ini saya sedang belajar
+        JavaScript untuk mengembangkan website portofolio sendiri.
+      </p>
+    </section>
+
+    <section id="proyek" class="fade-in">
+      <h2>Proyek Saya</h2>
+      <div id="daftar-proyek"></div>
+    </section>
+
+    <section id="kontak" class="fade-in">
+      <h2>Kontak</h2>
+      <form
+        id="form-kontak"
+        action="https://formspree.io/f/meoawarl"
+        method="POST"
+      >
+        <input type="text" name="nama" placeholder="Nama Anda" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="pesan" placeholder="Pesan Anda" required></textarea>
+        <button type="submit">Kirim</button>
+      </form>
+      <p id="feedback"></p>
+    </section>
+
+    <button id="toTopBtn">🔝 Atas</button>
+    <button id="darkModeToggle">🌙</button>
+
+    <script>
+      const proyekData = [
+        {
+          judul: "Website CV",
+          deskripsi:
+            "Sebuah website untuk menampilkan Curriculum Vitae dengan desain modern.",
+        },
+        {
+          judul: "Aplikasi Catatan Harian",
+          deskripsi:
+            "Aplikasi berbasis web untuk mencatat kegiatan harian dan to-do list.",
+        },
+        {
+          judul: "Landing Page Produk",
+          deskripsi:
+            "Halaman promosi sederhana untuk produk digital atau fisik.",
+        },
+      ];
+
+      const daftarProyek = document.getElementById("daftar-proyek");
+
+      proyekData.forEach((proyek) => {
+        const div = document.createElement("div");
+        div.className = "proyek";
+        div.innerHTML = `<h3>${proyek.judul}</h3><p>${proyek.deskripsi}</p>`;
+        daftarProyek.appendChild(div);
+      });
+
+      const fadeEls = document.querySelectorAll(".fade-in");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      fadeEls.forEach((el) => observer.observe(el));
+
+      const toTopBtn = document.getElementById("toTopBtn");
+      window.onscroll = function () {
+        if (
+          document.body.scrollTop > 300 ||
+          document.documentElement.scrollTop > 300
+        ) {
+          toTopBtn.style.display = "block";
+        } else {
+          toTopBtn.style.display = "none";
+        }
+      };
+      toTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      const toggle = document.getElementById("darkModeToggle");
+      const currentTheme = localStorage.getItem("theme");
+      if (currentTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        toggle.textContent = "☀️";
+      }
+
+      toggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDark = document.body.classList.contains("dark-mode");
+        toggle.textContent = isDark ? "☀️" : "🌙";
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+
+      // Menangani pesan setelah pengiriman form
+      const formKontak = document.getElementById("form-kontak");
+      const feedback = document.getElementById("feedback");
+
+      formKontak.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const nama = document.querySelector('input[name="nama"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+        const pesan = document.querySelector('textarea[name="pesan"]').value;
+
+        if (nama && email && pesan) {
+          feedback.innerText = `Terima kasih, ${nama}! Pesanmu telah dikirim.`;
+
+          // Menyembunyikan pesan setelah 5 detik
+          setTimeout(function () {
+            feedback.innerText = ""; // Mengosongkan pesan setelah 5 detik
+          }, 5000); // 5000 milidetik = 5 detik
+
+          // Reset form setelah pesan terkirim
+          formKontak.reset();
+        } else {
+          feedback.innerText = "Mohon isi semua kolom.";
         }
       });
-    }, { threshold: 0.1 });
-
-    fadeEls.forEach(el => observer.observe(el));
-
-    const toTopBtn = document.getElementById("toTopBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        toTopBtn.style.display = "block";
-      } else {
-        toTopBtn.style.display = "none";
-      }
-    };
-    toTopBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    const toggle = document.getElementById("darkModeToggle");
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme === "dark") {
-      document.body.classList.add("dark-mode");
-      toggle.textContent = "☀️";
-    }
-
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      const isDark = document.body.classList.contains("dark-mode");
-      toggle.textContent = isDark ? "☀️" : "🌙";
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-    
-    const formKontak = document.getElementById("form-kontak");
-const feedback = document.getElementById("feedback");
-
-formKontak.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const nama = document.getElementById("namaInput").value;
-  const email = document.getElementById("emailInput").value;
-  const pesan = document.getElementById("pesanInput").value;
-
-  if (nama && email && pesan) {
-    feedback.innerText = `Terima kasih, ${nama}! Pesanmu telah dikirim.`;
-
-    // Menyembunyikan pesan setelah 5 detik
-    setTimeout(function () {
-      feedback.innerText = ''; // Mengosongkan pesan setelah 5 detik
-    }, 5000); // 5000 milidetik = 5 detik
-
-    // Reset form setelah pesan terkirim
-    formKontak.reset();
-  } else {
-    feedback.innerText = "Mohon isi semua kolom.";
-  }
-});
-
-  </script>
-</body>
+    </script>
+  </body>
 </html>
