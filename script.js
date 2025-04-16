@@ -72,27 +72,38 @@ const formKontak = document.getElementById("form-kontak");
 const feedback = document.getElementById("feedback");
 
 formKontak.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const nama = document.getElementById("namaInput").value;
-  const email = document.getElementById("emailInput").value;
-  const pesan = document.getElementById("pesanInput").value;
-
-  if (nama && email && pesan) {
-    feedback.innerText = `Terima kasih, ${nama}! Pesanmu telah dikirim.`;
-    feedback.style.display = "block"; // Menampilkan pesan
-
-    // Menyembunyikan pesan setelah 5 detik
-    setTimeout(function () {
-      feedback.innerText = ""; // Mengosongkan pesan setelah 5 detik
-      feedback.style.display = "none"; // Menyembunyikan pesan
-    }, 5000); // 5000 milidetik = 5 detik
-
-    // Reset form setelah pesan terkirim
-    formKontak.reset();
-  } else {
-    feedback.innerText = "Mohon isi semua kolom.";
-    feedback.style.display = "block"; // Menampilkan pesan error
-  }
-});
+    event.preventDefault();
+  
+    const data = new FormData(formKontak);
+  
+    fetch(formKontak.action, {
+      method: "POST",
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          const nama = document.getElementById("namaInput").value;
+          feedback.innerText = `Terima kasih, ${nama}! Pesanmu telah dikirim.`;
+          feedback.style.display = "block";
+          setTimeout(() => {
+            feedback.innerText = "";
+            feedback.style.display = "none";
+          }, 5000);
+          formKontak.reset();
+        } else {
+          response.json().then(data => {
+            feedback.innerText = data.errors ? data.errors[0].message : "Terjadi kesalahan.";
+            feedback.style.display = "block";
+          });
+        }
+      })
+      .catch(error => {
+        feedback.innerText = "Gagal mengirim. Silakan coba lagi.";
+        feedback.style.display = "block";
+      });
+  });
+  
 
