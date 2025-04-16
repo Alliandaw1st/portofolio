@@ -134,6 +134,44 @@
           margin: 0.5rem 0;
         }
       }
+
+      /* Modal */
+      .modal {
+        display: none; /* Sembunyikan modal secara default */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0); /* Semitransparan */
+        background-color: rgba(0, 0, 0, 0.4); /* Semitransparan */
+        padding-top: 60px;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 300px;
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -179,6 +217,13 @@
 
     <button id="toTopBtn">🔝 Atas</button>
     <button id="darkModeToggle">🌙</button>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modalMessage"></p>
+      </div>
+    </div>
 
     <script>
       const proyekData = [
@@ -255,6 +300,10 @@
       const formKontak = document.getElementById("form-kontak");
       const feedback = document.getElementById("feedback");
 
+      const modal = document.getElementById("myModal");
+      const modalMessage = document.getElementById("modalMessage");
+      const closeBtn = document.getElementsByClassName("close")[0];
+
       formKontak.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -263,8 +312,8 @@
         const pesan = document.getElementById("pesanInput").value;
 
         if (nama && email && pesan) {
-          // Pop-up pesan terima kasih
-          alert(`Terima kasih, ${nama}! Pesanmu telah dikirim.`);
+          modalMessage.innerText = `Terima kasih, ${nama}! Pesanmu telah dikirim.`;
+          modal.style.display = "block"; // Tampilkan modal
 
           // Reset form setelah pesan terkirim
           formKontak.reset();
@@ -272,6 +321,18 @@
           feedback.innerText = "Mohon isi semua kolom.";
         }
       });
+
+      // Tutup modal saat klik tombol "X"
+      closeBtn.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // Tutup modal jika klik di luar modal
+      window.onclick = function (event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
     </script>
   </body>
 </html>
